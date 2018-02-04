@@ -1,0 +1,1 @@
+export const MODULE_REQUEST = 'MODULE_REQUEST'
