@@ -26,7 +26,7 @@ const reducers = {
 }
 
 const authInitialState = {
-  isLogged: !false,
+  isLogged: false,
   loggedUser: {},
 }
 
