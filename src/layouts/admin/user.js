@@ -1,9 +1,12 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { applySpec } from 'ramda'
 import IconButton from 'material-ui/IconButton'
 import Menu, { MenuItem } from 'material-ui/Menu'
 import AccountCircleIcon from 'material-ui-icons/AccountCircle'
+
+import { logout } from '../../store/actions/auth'
 
 class UserAdminLayout extends Component {
   state = {
@@ -19,7 +22,7 @@ class UserAdminLayout extends Component {
   }
 
   render() {
-    const { loggedUser } = this.props
+    const { loggedUser, logout } = this.props
     const { anchorEl } = this.state
     const open = Boolean(anchorEl)
 
@@ -49,6 +52,7 @@ class UserAdminLayout extends Component {
         >
           <MenuItem onClick={this.handleClose}>Profile</MenuItem>
           <MenuItem onClick={this.handleClose}>My account</MenuItem>
+          <MenuItem onClick={logout}>Logout</MenuItem>
         </Menu>
       </div>
     )
@@ -57,10 +61,15 @@ class UserAdminLayout extends Component {
 
 UserAdminLayout.propTypes = {
   loggedUser: PropTypes.object.isRequired,
+  logout: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = state => ({
   loggedUser: state.auth.loggedUser,
 })
 
-export default connect(mapStateToProps)(UserAdminLayout)
+const mapDispatchToProps = applySpec({
+  logout,
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserAdminLayout)

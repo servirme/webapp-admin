@@ -12,7 +12,6 @@ import SubmitButton from '../../components/SubmitButton'
 import TextField from '../../components/TextField'
 import ApiMessage from '../../components/ApiMessage'
 import withRoot from '../../withRoot'
-// const withRoot = x => x
 
 const getRedirectRoute = pathOr({ pathname: '/' }, ['state', 'from'])
 
