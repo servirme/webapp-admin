@@ -21,7 +21,7 @@ const reducers = {
 }
 
 const apiInitialState = {
-  language: 'pt-BR',
+  language: window.navigator.language,
   modules: {},
 }
 
