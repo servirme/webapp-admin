@@ -1,7 +1,8 @@
 [Servir.me](https://github.com/MatheusVellone/servir.me) WebApp Admin
 -----------------
 
-[![Build Status]([![Build Status](https://travis-ci.org/MatheusVellone/servir.me-webapp-admin.svg?branch=master)](https://travis-ci.org/MatheusVellone/servir.me-webapp-admin))
+[![Build Status](https://travis-ci.org/MatheusVellone/servir.me-webapp-admin.svg?branch=master)](https://travis-ci.org/MatheusVellone/servir.me-webapp-admin)
+[![Coverage Status](https://coveralls.io/repos/github/MatheusVellone/servir.me-webapp-admin/badge.svg?branch=master)](https://coveralls.io/github/MatheusVellone/servir.me-webapp-admin?branch=master)
 
 ## Table of Contents
 
