@@ -75,7 +75,7 @@ class Login extends Component {
         <br/>
         <br/>
         <SubmitButton
-          loading={submitted}
+          isLoading={submitted}
           onClick={this.loginAction}>
           Login
         </SubmitButton>

@@ -29,14 +29,14 @@ class SubmitButton extends Component {
 
   render() {
     const { submitted } = this.state
-    const { loading } = this.props
+    const { isLoading, disabled } = this.props
 
-    const loadingState = typeof loading !== 'undefined' ?
-      loading : submitted
+    const loadingState = typeof isLoading !== 'undefined' ?
+      isLoading : submitted
 
     return (
       <Button
-        {...this.props}
+        disabled={disabled}
         raised={true}
         color='primary'
         onClick={this.buttonClick}>
@@ -53,7 +53,8 @@ class SubmitButton extends Component {
 SubmitButton.propTypes = {
   onClick: PropTypes.func.isRequired,
   children: PropTypes.node.isRequired,
-  loading: PropTypes.bool,
+  isLoading: PropTypes.bool,
+  disabled: PropTypes.bool,
 }
 
 export default SubmitButton
