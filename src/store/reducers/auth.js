@@ -9,7 +9,7 @@ const loginSuccess = (state, payload) => {
   return {
     ...state,
     isLogged: true,
-    loggedUser: payload,
+    token: payload.token,
   }
 }
 
@@ -17,14 +17,14 @@ const registerSuccess = (state, payload) => {
   return {
     ...state,
     isLogged: true,
-    loggedUser: payload,
+    token: payload.token,
   }
 }
 
 const logout = state => ({
   ...state,
   isLogged: false,
-  loggedUser: {},
+  token: false,
 })
 
 const reducers = {
@@ -35,7 +35,7 @@ const reducers = {
 
 const authInitialState = {
   isLogged: false,
-  loggedUser: {},
+  loggedUser: null,
   token: '',
 }
 
