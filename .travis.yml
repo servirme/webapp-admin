@@ -7,6 +7,9 @@ cache:
 notifications:
   slack: servirme:PL18rvrpG8M0tB8dTVhxAODI
 
+before_install:
+  - npm set progress=false
+
 script:
   - npm run lint
   - npm run test
