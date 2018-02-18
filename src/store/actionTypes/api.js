@@ -1,1 +1,1 @@
-export const MODULE_REQUEST = 'MODULE_REQUEST'
+export default 'MODULE_REQUEST'

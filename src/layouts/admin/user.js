@@ -22,7 +22,7 @@ class UserAdminLayout extends Component {
   }
 
   render() {
-    const { loggedUser, logout } = this.props
+    const { logoutAction } = this.props
     const { anchorEl } = this.state
     const open = Boolean(anchorEl)
 
@@ -52,7 +52,7 @@ class UserAdminLayout extends Component {
         >
           <MenuItem onClick={this.handleClose}>Profile</MenuItem>
           <MenuItem onClick={this.handleClose}>My account</MenuItem>
-          <MenuItem onClick={logout}>Logout</MenuItem>
+          <MenuItem onClick={logoutAction}>Logout</MenuItem>
         </Menu>
       </div>
     )
@@ -61,7 +61,7 @@ class UserAdminLayout extends Component {
 
 UserAdminLayout.propTypes = {
   loggedUser: PropTypes.object.isRequired,
-  logout: PropTypes.func.isRequired,
+  logoutAction: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = state => ({
@@ -69,7 +69,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = applySpec({
-  logout,
+  logoutAction: logout,
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserAdminLayout)
