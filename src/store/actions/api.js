@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { assocPath, identity } from 'ramda'
 
-import { MODULE_REQUEST } from '../actionTypes/api'
+import MODULE_REQUEST from '../actionTypes/api'
 import ApiError from '../../Errors/ApiError'
 
 const isProd = process.env.NODE_ENV === 'production'
@@ -75,11 +75,9 @@ const request = (config, options = {}) => {
     options.dispatch((innerDispatch, getState) => {
       const state = getState()
 
-      console.log(state.auth)
       let requestConfig = assocPath(['headers', 'Accept-Language'], state.api.language, config)
       requestConfig = assocPath(['headers', 'Token'], state.auth.token, requestConfig)
 
-      console.log(requestConfig.headers)
       options.dispatch = innerDispatch
 
       handleRequest(instance(requestConfig), options)

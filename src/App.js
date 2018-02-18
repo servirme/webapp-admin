@@ -13,7 +13,7 @@ import './setup'
 const pathsToPersist = [
   'api.language',
   'auth.isLogged',
-  'auth.loggedUser',
+  'auth.token',
 ]
 const persistConfig = {
   merge: (initial, persisted) => {

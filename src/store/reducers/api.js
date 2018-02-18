@@ -1,7 +1,5 @@
 import baseReducer from './helpers/base'
-import {
-  MODULE_REQUEST,
-} from '../actionTypes/api'
+import MODULE_REQUEST from '../actionTypes/api'
 
 const onModuleRequest = (state, { error, module, response }) => {
   return {

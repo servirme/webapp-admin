@@ -29,14 +29,19 @@ class SubmitButton extends Component {
 
   render() {
     const { submitted } = this.state
+    const { isLoading, disabled } = this.props
+
+    const loadingState = typeof isLoading !== 'undefined' ?
+      isLoading : submitted
+
     return (
       <Button
-        {...this.props}
+        disabled={disabled}
         raised={true}
         color='primary'
         onClick={this.buttonClick}>
         {
-          submitted ?
+          loadingState ?
             (<CircularProgress color='inherit' size={20}/>)
             : this.props.children
         }
@@ -48,6 +53,8 @@ class SubmitButton extends Component {
 SubmitButton.propTypes = {
   onClick: PropTypes.func.isRequired,
   children: PropTypes.node.isRequired,
+  isLoading: PropTypes.bool,
+  disabled: PropTypes.bool,
 }
 
 export default SubmitButton
