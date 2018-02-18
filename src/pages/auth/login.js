@@ -19,15 +19,21 @@ class Login extends Component {
   state = {
     email: '',
     password: '',
+    submitted: false,
   }
 
   loginAction = () => {
+    this.setState({ submitted: true })
     const { email, password } = this.state
     return this.props.login(email, password)
+      .tap(() => {
+        this.setState({ submitted: false })
+      })
   }
 
   render() {
     const { location, loginApiResponse, isLogged } = this.props
+    const { submitted } = this.state
 
     if (isLogged) {
       const redirectTo = getRedirectRoute(location)
@@ -49,6 +55,7 @@ class Login extends Component {
         <TextField
           autoFocus={true}
           fullWidth
+          onPressEnter={this.loginAction}
           fieldName='email'
           apiResponse={loginApiResponse}
           type="text"
@@ -58,6 +65,7 @@ class Login extends Component {
         <br/>
         <TextField
           type="password"
+          onPressEnter={this.loginAction}
           fullWidth
           fieldName='password'
           apiResponse={loginApiResponse}
@@ -67,6 +75,7 @@ class Login extends Component {
         <br/>
         <br/>
         <SubmitButton
+          loading={submitted}
           onClick={this.loginAction}>
           Login
         </SubmitButton>
