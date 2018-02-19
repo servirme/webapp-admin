@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { applySpec } from 'ramda'
+import { applySpec, path } from 'ramda'
 import IconButton from 'material-ui/IconButton'
 import Menu, { MenuItem } from 'material-ui/Menu'
 import AccountCircleIcon from 'material-ui-icons/AccountCircle'
@@ -64,8 +64,8 @@ UserAdminLayout.propTypes = {
   logoutAction: PropTypes.func.isRequired,
 }
 
-const mapStateToProps = state => ({
-  loggedUser: state.auth.loggedUser,
+const mapStateToProps = applySpec({
+  loggedUser: path(['auth', 'loggedUser']),
 })
 
 const mapDispatchToProps = applySpec({
