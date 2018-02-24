@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { Redirect, Route } from 'react-router-dom'
+import { applySpec, path } from 'ramda'
 
 const PrivateRoute = ({ isLogged, component: Component, ...props }) => {
   const render = (innerProps) => {
@@ -29,8 +30,8 @@ PrivateRoute.propTypes = {
   component: PropTypes.func.isRequired,
 }
 
-const mapStateToProps = state => ({
-  isLogged: state.auth.isLogged,
+const mapStateToProps = applySpec({
+  isLogged: path(['auth', 'isLogged']),
 })
 
 export default connect(mapStateToProps)(PrivateRoute)

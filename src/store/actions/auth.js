@@ -15,6 +15,7 @@ export const login = dispatch =>
     return post('/auth/login', body, {
       dispatch,
       module: 'login',
+      notificate: true,
       success: LOGIN_SUCCESS,
     })
   }

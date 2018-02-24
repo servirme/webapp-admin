@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { applySpec } from 'ramda'
+import { applySpec, path } from 'ramda'
 import Typography from 'material-ui/Typography'
 import Button from 'material-ui/Button'
 import Checkbox from 'material-ui/Checkbox'
@@ -12,7 +12,6 @@ import AuthLayout from '../../layouts/auth'
 import { register } from '../../store/actions/auth'
 import TextField from '../../components/TextField'
 import SubmitButton from '../../components/SubmitButton'
-import ApiMessage from '../../components/ApiMessage'
 import withRoot from '../../withRoot'
 
 class Register extends Component {
@@ -41,7 +40,6 @@ class Register extends Component {
 
     return (
       <AuthLayout>
-        <ApiMessage apiResponse={registerApiResponse}/>
         <Typography
           align='center'
           gutterBottom={true}
@@ -97,12 +95,10 @@ Register.propTypes = {
   registerApiResponse: PropTypes.object,
 }
 
-const mapStateToProps = (state) => {
-  return {
-    isLogged: state.auth.isLogged,
-    registerApiResponse: state.api.modules.register,
-  }
-}
+const mapStateToProps = applySpec({
+  isLogged: path(['auth', 'isLogged']),
+  registerApiResponse: path(['api', 'modules', 'register']),
+})
 
 const mapDispatchToProps = applySpec({
   register,

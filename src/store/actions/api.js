@@ -2,6 +2,7 @@ import axios from 'axios'
 import { assocPath, identity } from 'ramda'
 
 import MODULE_REQUEST from '../actionTypes/api'
+import { apiResponseNotification } from '../actions/notifications'
 import ApiError from '../../Errors/ApiError'
 
 const isProd = process.env.NODE_ENV === 'production'
@@ -22,9 +23,8 @@ const apiModule = (dispatch, module, error) => response =>
     response: response.data,
   })
 
-const dispatchEvent = (dispatch, type) => {
-  return response => dispatch({ type, ...response.data })
-}
+const dispatchEvent = (dispatch, type) => response =>
+  dispatch({ type, ...response.data })
 
 const handleRequest = (promise, options = {}) => {
   const {
@@ -33,6 +33,7 @@ const handleRequest = (promise, options = {}) => {
     error,
     dispatch,
     module,
+    notificate,
   } = options
 
   if (before) {
@@ -41,6 +42,7 @@ const handleRequest = (promise, options = {}) => {
 
   let promiseEnhanced = promise
     .catch(extractError)
+    .tapCatch(apiResponseNotification(dispatch, true))
 
   if (module) {
     dispatch({ type: MODULE_REQUEST, module })
@@ -58,6 +60,11 @@ const handleRequest = (promise, options = {}) => {
   if (error) {
     promiseEnhanced = promiseEnhanced
       .tapCatch(dispatchEvent(dispatch, error))
+  }
+
+  if (notificate) {
+    promiseEnhanced = promiseEnhanced
+      .tap(apiResponseNotification(dispatch, false))
   }
 
   return promiseEnhanced
