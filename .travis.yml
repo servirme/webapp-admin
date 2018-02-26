@@ -4,9 +4,6 @@ node_js:
 cache:
   - node_modules
 
-notifications:
-  slack: servirme:PL18rvrpG8M0tB8dTVhxAODI
-
 before_install:
   - npm set progress=false
 
