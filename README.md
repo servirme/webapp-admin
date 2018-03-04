@@ -2,7 +2,7 @@
 -----------------
 
 [![Build Status](https://travis-ci.org/servirme/webapp-admin.svg?branch=master)](https://travis-ci.org/servirme/webapp-admin)
-[![Coverage Status](https://coveralls.io/repos/github/MatheusVellone/servir.me-webapp-admin/badge.svg?branch=master)](https://coveralls.io/github/MatheusVellone/servir.me-webapp-admin?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/servirme/webapp-admin/badge.svg?branch=master)](https://coveralls.io/github/servirme/webapp-admin?branch=master)
 
 ## Table of Contents
 
