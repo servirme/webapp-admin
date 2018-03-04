@@ -20,7 +20,7 @@ class Index extends React.Component {
     return (
       <AdminLayout>
         <div className={classes.root}>
-          <Typography type="display1" gutterBottom>
+          <Typography variant="display1" gutterBottom>
             Servir.me
           </Typography>
           <Typography>{'You think water moves fast? You should see ice.'}</Typography>

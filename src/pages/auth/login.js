@@ -37,7 +37,7 @@ class Login extends Component {
     if (isLogged) {
       const redirectTo = getRedirectRoute(location)
       return (
-        <Redirect to={redirectTo}/>
+        <Redirect to={redirectTo} />
       )
     }
 
@@ -46,7 +46,7 @@ class Login extends Component {
         <Typography
           align='center'
           gutterBottom={true}
-          type='display1'
+          variant='display1'
         >
           Login
         </Typography>
@@ -60,7 +60,7 @@ class Login extends Component {
           helperText='Enter your email'
           onChange={this.setStateParam('email')}
         />
-        <br/>
+        <br />
         <TextField
           type="password"
           onPressEnter={this.loginAction}
@@ -70,8 +70,8 @@ class Login extends Component {
           helperText='Enter your password'
           onChange={this.setStateParam('password')}
         />
-        <br/>
-        <br/>
+        <br />
+        <br />
         <SubmitButton
           isLoading={submitted}
           onClick={this.loginAction}>
