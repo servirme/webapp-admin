@@ -44,7 +44,7 @@ const AuthLayout = ({ children, classes }) => {
       >
         <Grid item xs={6} md={3}>
           <Card raised={true} className={classes.content}>
-            { children }
+            {children}
           </Card>
         </Grid>
       </Grid>

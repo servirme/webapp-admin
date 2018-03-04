@@ -37,12 +37,12 @@ class SubmitButton extends Component {
     return (
       <Button
         disabled={disabled}
-        raised={true}
+        variant='raised'
         color='primary'
         onClick={this.buttonClick}>
         {
           loadingState ?
-            (<CircularProgress color='inherit' size={20}/>)
+            (<CircularProgress color='inherit' size={20} />)
             : this.props.children
         }
       </Button>
