@@ -129,7 +129,7 @@ class AdminLayout extends Component {
             >
               Persistent drawer
             </Typography>
-            <UserAdminLayout/>
+            <UserAdminLayout />
           </Toolbar>
         </AppBar>
         <DrawerAdminLayout
@@ -137,7 +137,7 @@ class AdminLayout extends Component {
           width={drawerWidth}
           onClose={this.toggleDrawer}
         />
-        <main className={contentClasses}>{ children }</main>
+        <main className={contentClasses}>{children}</main>
       </div>
     )
   }

@@ -1,9 +1,9 @@
-Description
+## Description
 
 
-Checklist for a good PR
+### Checklist for a good PR
   - [ ] Bumped `npm` version
 
-Which issues this PR closes ?
+### Which issues this PR closes ?
 
 - Closes servirme/servir.me#
