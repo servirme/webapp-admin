@@ -1,15 +1,17 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import persistState from 'redux-localstorage'
 import { BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import reduxThunk from 'redux-thunk'
 import { compose, createStore, applyMiddleware } from 'redux'
 import { assocPath, mergeDeepRight, path } from 'ramda'
+import { MuiThemeProvider } from 'material-ui/styles'
 
 import AppRouter from './router'
 import reducers, { initialState } from './store/reducers'
 import './setup'
 import NotificationMessage from './components/NotificationMessage'
+import theme from './materializeTheme'
 
 const pathsToPersist = [
   'api.language',
@@ -43,12 +45,12 @@ const store = createStore(
 const App = () => {
   return (
     <Provider store={store}>
-      <Fragment>
-        <NotificationMessage/>
+      <MuiThemeProvider theme={theme}>
+        <NotificationMessage />
         <BrowserRouter>
-          <AppRouter/>
+          <AppRouter />
         </BrowserRouter>
-      </Fragment>
+      </MuiThemeProvider>
     </Provider>
   )
 }
