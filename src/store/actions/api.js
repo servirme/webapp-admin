@@ -2,7 +2,7 @@ import axios from 'axios'
 import { assocPath, identity } from 'ramda'
 
 import MODULE_REQUEST from '../actionTypes/api'
-import { apiResponseNotification } from '../actions/notifications'
+import { apiResponseNotification } from './notifications'
 import ApiError from '../../Errors/ApiError'
 
 const isProd = process.env.NODE_ENV === 'production'

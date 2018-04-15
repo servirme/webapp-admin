@@ -7,7 +7,6 @@ import CloseIcon from 'material-ui-icons/Close'
 import { applySpec, path } from 'ramda'
 
 import { dismissNotification } from '../store/actions/notifications'
-import withRoot from '../withRoot'
 
 class NotificationMessage extends Component {
   state = {
@@ -75,4 +74,4 @@ const mapDispatchToProps = applySpec({
   dismissNotification,
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRoot(NotificationMessage))
+export default connect(mapStateToProps, mapDispatchToProps)(NotificationMessage)

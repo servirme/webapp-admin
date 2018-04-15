@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import Typography from 'material-ui/Typography'
 import { withStyles } from 'material-ui/styles'
 
-import withRoot from '../withRoot'
 import AdminLayout from '../layouts/admin/index'
 
 const styles = theme => ({
@@ -34,4 +33,4 @@ Index.propTypes = {
   classes: PropTypes.object.isRequired,
 }
 
-export default withRoot(withStyles(styles)(Index))
+export default withStyles(styles)(Index)

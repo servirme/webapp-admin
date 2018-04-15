@@ -12,7 +12,6 @@ import AuthLayout from '../../layouts/auth'
 import { register } from '../../store/actions/auth'
 import TextField from '../../components/TextField'
 import SubmitButton from '../../components/SubmitButton'
-import withRoot from '../../withRoot'
 
 class Register extends Component {
   state = {
@@ -104,4 +103,4 @@ const mapDispatchToProps = applySpec({
   register,
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRoot(Register))
+export default connect(mapStateToProps, mapDispatchToProps)(Register)

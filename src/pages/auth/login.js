@@ -10,7 +10,6 @@ import AuthLayout from '../../layouts/auth'
 import { login } from '../../store/actions/auth'
 import SubmitButton from '../../components/SubmitButton'
 import TextField from '../../components/TextField'
-import withRoot from '../../withRoot'
 
 const getRedirectRoute = pathOr({ pathname: '/' }, ['state', 'from'])
 
@@ -101,4 +100,4 @@ const mapDispatchToProps = applySpec({
   login,
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRoot(Login))
+export default connect(mapStateToProps, mapDispatchToProps)(Login)
