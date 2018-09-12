@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import Card from 'material-ui/Card'
 import Grid from 'material-ui/Grid'
 import { withStyles } from 'material-ui/styles'
+import { compose } from 'ramda'
 
 const styles = theme => ({
   appFrame: {
@@ -57,4 +58,8 @@ AuthLayout.propTypes = {
   classes: PropTypes.object.isRequired,
 }
 
-export default withStyles(styles)(AuthLayout)
+const enhance = compose(
+  withStyles(styles)
+)
+
+export default enhance(AuthLayout)

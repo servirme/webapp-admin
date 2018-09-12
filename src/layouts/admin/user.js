@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { applySpec, path } from 'ramda'
+import { applySpec, compose, path } from 'ramda'
 import IconButton from 'material-ui/IconButton'
 import Menu, { MenuItem } from 'material-ui/Menu'
 import AccountCircleIcon from 'material-ui-icons/AccountCircle'
@@ -72,4 +72,8 @@ const mapDispatchToProps = applySpec({
   logoutAction: logout,
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserAdminLayout)
+const enhance = compose(
+  connect(mapStateToProps, mapDispatchToProps)
+)
+
+export default enhance(UserAdminLayout)

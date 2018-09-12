@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { applySpec, path } from 'ramda'
+import { applySpec, compose, path } from 'ramda'
 import Typography from 'material-ui/Typography'
 import Button from 'material-ui/Button'
 import Checkbox from 'material-ui/Checkbox'
@@ -103,4 +103,8 @@ const mapDispatchToProps = applySpec({
   register,
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Register)
+const enhance = compose(
+  connect(mapStateToProps, mapDispatchToProps)
+)
+
+export default enhance(Register)

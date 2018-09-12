@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Typography from 'material-ui/Typography'
 import { withStyles } from 'material-ui/styles'
+import { compose } from 'ramda'
 
 import AdminLayout from '../layouts/admin/index'
 
@@ -33,4 +34,8 @@ Index.propTypes = {
   classes: PropTypes.object.isRequired,
 }
 
-export default withStyles(styles)(Index)
+const enhance = compose(
+  withStyles(styles)
+)
+
+export default enhance(Index)
