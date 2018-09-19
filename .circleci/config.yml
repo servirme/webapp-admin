@@ -1,0 +1,28 @@
+version: 2
+jobs:
+  test:
+    docker:
+      - image: circleci/node:10.10
+    working_directory: ~/webapp-admin
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{checksum "package-lock.json"}}
+      - run: npm ci
+      - save_cache:
+          key: v1-dependencies-{{ checksum "package-lock.json" }}
+          paths:
+            - node_modules
+      - run: npm run lint
+      - run: npm run test
+      - run: npm run send-coverage-data
+
+workflows:
+  version: 2
+  test:
+    jobs:
+    - test:
+        filters:
+          tags:
+            only: /^v.*/c
