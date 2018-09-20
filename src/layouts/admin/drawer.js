@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
+import { compose } from 'ramda'
 import { withStyles } from 'material-ui/styles'
 import Drawer from 'material-ui/Drawer'
 import Hidden from 'material-ui/Hidden'
@@ -118,5 +119,9 @@ DrawerAdminLayout.propTypes = {
   onClose: PropTypes.func.isRequired,
 }
 
-export default withStyles(styles)(DrawerAdminLayout)
+const enhance = compose(
+  withStyles(styles)
+)
+
+export default enhance(DrawerAdminLayout)
 export { drawerWidth }

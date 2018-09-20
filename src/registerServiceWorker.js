@@ -1,3 +1,4 @@
+import isProd from './env'
 /* eslint no-console: "warn" */
 
 // In production, we register a service worker to serve assets from local cache.
@@ -77,7 +78,7 @@ function checkValidServiceWorker(swUrl) {
 }
 
 export default function register() {
-  if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
+  if (isProd && 'serviceWorker' in navigator) {
     // The URL constructor is available in all browsers that support SW.
     const publicUrl = new URL(process.env.PUBLIC_URL, window.location)
     if (publicUrl.origin !== window.location.origin) {

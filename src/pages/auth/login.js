@@ -4,10 +4,15 @@ import { connect } from 'react-redux'
 import { Link, Redirect } from 'react-router-dom'
 import Typography from 'material-ui/Typography'
 import Button from 'material-ui/Button'
-import { applySpec, path, pathOr } from 'ramda'
+import {
+  applySpec,
+  compose,
+  path,
+  pathOr,
+} from 'ramda'
 
 import AuthLayout from '../../layouts/auth'
-import { login } from '../../store/actions/auth'
+import { login } from '../../redux/actions/auth'
 import SubmitButton from '../../components/SubmitButton'
 import TextField from '../../components/TextField'
 
@@ -100,4 +105,8 @@ const mapDispatchToProps = applySpec({
   login,
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login)
+const enhance = compose(
+  connect(mapStateToProps, mapDispatchToProps)
+)
+
+export default enhance(Login)

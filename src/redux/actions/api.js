@@ -4,8 +4,8 @@ import { assocPath, identity } from 'ramda'
 import MODULE_REQUEST from '../actionTypes/api'
 import { apiResponseNotification } from './notifications'
 import ApiError from '../../Errors/ApiError'
+import isProd from '../../env'
 
-const isProd = process.env.NODE_ENV === 'production'
 const API_DOMAIN = isProd ? 'https://api.servir.me' : 'http://localhost:3000'
 
 const instance = axios.create({
