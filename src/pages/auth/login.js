@@ -12,7 +12,7 @@ import {
 } from 'ramda'
 
 import AuthLayout from '../../layouts/auth'
-import { login } from '../../store/actions/auth'
+import { login } from '../../redux/actions/auth'
 import SubmitButton from '../../components/SubmitButton'
 import TextField from '../../components/TextField'
 

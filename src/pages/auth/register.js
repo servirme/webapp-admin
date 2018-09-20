@@ -9,7 +9,7 @@ import Checkbox from 'material-ui/Checkbox'
 import { FormControlLabel } from 'material-ui/Form'
 
 import AuthLayout from '../../layouts/auth'
-import { register } from '../../store/actions/auth'
+import { register } from '../../redux/actions/auth'
 import TextField from '../../components/TextField'
 import SubmitButton from '../../components/SubmitButton'
 

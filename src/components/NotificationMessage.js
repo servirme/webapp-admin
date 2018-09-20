@@ -6,7 +6,7 @@ import IconButton from 'material-ui/IconButton'
 import CloseIcon from 'material-ui-icons/Close'
 import { applySpec, compose, path } from 'ramda'
 
-import { dismissNotification } from '../store/actions/notifications'
+import { dismissNotification } from '../redux/actions/notifications'
 
 class NotificationMessage extends Component {
   state = {
