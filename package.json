@@ -1,6 +1,6 @@
 {
   "name": "servir.me-webapp-admin",
-  "version": "1.0.0-beta.1",
+  "version": "0.0.2",
   "private": true,
   "dependencies": {
     "axios": "0.17.1",
