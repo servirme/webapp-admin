@@ -1,0 +1,18 @@
+{
+  "auth": {
+    "login": {
+      "header": "Login"
+    },
+    "register": {
+      "header": "Register"
+    }
+  },
+  "button": {
+    "login": "Login",
+    "register": "Register"
+  },
+  "input": {
+    "email": "Enter your email",
+    "password": "Enter your password"
+  }
+}

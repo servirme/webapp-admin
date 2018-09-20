@@ -10,6 +10,7 @@ import {
   path,
   pathOr,
 } from 'ramda'
+import { translate } from 'react-i18next'
 
 import AuthLayout from '../../layouts/auth'
 import { login } from '../../redux/actions/auth'
@@ -35,7 +36,12 @@ class Login extends Component {
   }
 
   render() {
-    const { location, loginApiResponse, isLogged } = this.props
+    const {
+      location,
+      loginApiResponse,
+      isLogged,
+      t,
+    } = this.props
     const { submitted } = this.state
 
     if (isLogged) {
@@ -49,10 +55,10 @@ class Login extends Component {
       <AuthLayout>
         <Typography
           align='center'
-          gutterBottom={true}
+          gutterBottom
           variant='display1'
         >
-          Login
+          {t('auth.login.header')}
         </Typography>
         <TextField
           autoFocus={true}
@@ -61,28 +67,25 @@ class Login extends Component {
           fieldName='email'
           apiResponse={loginApiResponse}
           type="text"
-          helperText='Enter your email'
+          helperText={t('input.email')}
           onChange={this.setStateParam('email')}
         />
-        <br />
         <TextField
           type="password"
           onPressEnter={this.loginAction}
           fullWidth
           fieldName='password'
           apiResponse={loginApiResponse}
-          helperText='Enter your password'
+          helperText={t('input.password')}
           onChange={this.setStateParam('password')}
         />
-        <br />
-        <br />
         <SubmitButton
           isLoading={submitted}
           onClick={this.loginAction}>
-          Login
+          {t('button.login')}
         </SubmitButton>
         <Button component={Link} to='/auth/register'>
-          Register
+          {t('button.register')}
         </Button>
       </AuthLayout>
     )
@@ -94,6 +97,7 @@ Login.propTypes = {
   isLogged: PropTypes.bool,
   loginApiResponse: PropTypes.object,
   location: PropTypes.object,
+  t: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = applySpec({
@@ -106,7 +110,8 @@ const mapDispatchToProps = applySpec({
 })
 
 const enhance = compose(
-  connect(mapStateToProps, mapDispatchToProps)
+  connect(mapStateToProps, mapDispatchToProps),
+  translate()
 )
 
 export default enhance(Login)

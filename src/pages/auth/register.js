@@ -7,6 +7,7 @@ import Typography from 'material-ui/Typography'
 import Button from 'material-ui/Button'
 import Checkbox from 'material-ui/Checkbox'
 import { FormControlLabel } from 'material-ui/Form'
+import { translate } from 'react-i18next'
 
 import AuthLayout from '../../layouts/auth'
 import { register } from '../../redux/actions/auth'
@@ -35,16 +36,16 @@ class Register extends Component {
 
   render() {
     const { acceptedTerms } = this.state
-    const { registerApiResponse } = this.props
+    const { registerApiResponse, t } = this.props
 
     return (
       <AuthLayout>
         <Typography
           align='center'
-          gutterBottom={true}
-          type='display1'
+          gutterBottom
+          variant='display1'
         >
-          Register
+          {t('auth.register.header')}
         </Typography>
         <TextField
           fieldName='email'
@@ -55,7 +56,6 @@ class Register extends Component {
           helperText='Enter your email'
           onChange={this.setStateParam('email')}
         />
-        <br/>
         <TextField
           fieldName='password'
           apiResponse={registerApiResponse}
@@ -70,6 +70,7 @@ class Register extends Component {
             <Checkbox
               checked={acceptedTerms}
               onChange={this.toggleTerms}
+              color="primary"
             />
           }
           label="Aceito os termos"
@@ -79,10 +80,10 @@ class Register extends Component {
           onClick={this.registerAction}
           disabled={!acceptedTerms}
         >
-          Register
+          {t('button.register')}
         </SubmitButton>
         <Button component={Link} to='/auth/login'>
-          Login
+          {t('button.login')}
         </Button>
       </AuthLayout>
     )
@@ -92,6 +93,7 @@ class Register extends Component {
 Register.propTypes = {
   register: PropTypes.func.isRequired,
   registerApiResponse: PropTypes.object,
+  t: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = applySpec({
@@ -104,7 +106,8 @@ const mapDispatchToProps = applySpec({
 })
 
 const enhance = compose(
-  connect(mapStateToProps, mapDispatchToProps)
+  connect(mapStateToProps, mapDispatchToProps),
+  translate()
 )
 
 export default enhance(Register)
