@@ -16,13 +16,16 @@ const TextField = ({
     }
   } : null
 
-  const fieldError = path(['response', 'validationErrors', fieldName], apiResponse)
+  const fieldError = path(
+    ['response', 'validationErrors', fieldName],
+    apiResponse
+  )
   return (
     <MaterialUITextField
       {...props}
       onKeyPress={onKeyPress}
       error={!!fieldError}
-      helperText={fieldError || helperText}
+      label={fieldError || helperText}
     />
   )
 }
@@ -31,7 +34,7 @@ TextField.propTypes = {
   apiResponse: PropTypes.object,
   helperText: PropTypes.string.isRequired,
   fieldName: PropTypes.string.isRequired,
-  onPressEnter: PropTypes.func.isRequired,
+  onPressEnter: PropTypes.func,
 }
 
 TextField.defaultProps = {
