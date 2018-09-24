@@ -1,8 +1,8 @@
-import { createMuiTheme } from 'material-ui/styles'
-import purple from 'material-ui/colors/purple'
-import green from 'material-ui/colors/green'
+import { createMuiTheme } from '@material-ui/core/styles'
+import purple from '@material-ui/core/colors/purple'
+import green from '@material-ui/core/colors/green'
 
-// https://material-ui-next.com/customization/themes/
+// https://material-ui.com/customization/themes/
 const theme = createMuiTheme({
   palette: {
     primary: purple,

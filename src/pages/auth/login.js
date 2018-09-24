@@ -2,15 +2,15 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Link, Redirect } from 'react-router-dom'
-import Typography from 'material-ui/Typography'
-import Button from 'material-ui/Button'
+import Typography from '@material-ui/core/Typography'
+import Button from '@material-ui/core/Button'
+import { translate } from 'react-i18next'
 import {
   applySpec,
   compose,
   path,
   pathOr,
 } from 'ramda'
-import { translate } from 'react-i18next'
 
 import AuthLayout from '../../layouts/auth'
 import { login } from '../../redux/actions/auth'

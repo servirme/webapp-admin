@@ -1,15 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Typography from 'material-ui/Typography'
-import { withStyles } from 'material-ui/styles'
+import Typography from '@material-ui/core/Typography'
+import { withStyles } from '@material-ui/core/styles'
 import { compose } from 'ramda'
 
 import AdminLayout from '../layouts/admin/index'
 
-const styles = theme => ({
+const styles = () => ({
   root: {
     textAlign: 'center',
-    paddingTop: theme.spacing.unit * 20,
   },
 })
 
@@ -20,10 +19,12 @@ class Index extends React.Component {
     return (
       <AdminLayout>
         <div className={classes.root}>
-          <Typography variant="display1" gutterBottom>
+          <Typography variant='display1' gutterBottom>
             Servir.me
           </Typography>
-          <Typography>{'You think water moves fast? You should see ice.'}</Typography>
+          <Typography>
+            You think water moves fast? You should see ice.
+          </Typography>
         </div>
       </AdminLayout>
     )
