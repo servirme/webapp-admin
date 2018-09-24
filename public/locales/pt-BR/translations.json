@@ -14,5 +14,6 @@
   "input": {
     "email": "Digite seu email",
     "password":"Digite sua senha"
-  }
+  },
+  "version": "Versão"
 }

@@ -1,6 +1,6 @@
 {
   "name": "servir.me-webapp-admin",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "private": true,
   "dependencies": {
     "@material-ui/core": "3.1.0",

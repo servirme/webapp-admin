@@ -3,6 +3,7 @@ import { BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import { I18nextProvider } from 'react-i18next'
 import { MuiThemeProvider } from 'material-ui/styles'
+import CssBaseline from '@material-ui/core/CssBaseline'
 
 import './setup'
 import AppRouter from './router'
@@ -16,6 +17,7 @@ const App = () => {
     <Provider store={reduxStore}>
       <I18nextProvider i18n={i18n}>
         <MuiThemeProvider theme={theme}>
+          <CssBaseline />
           <NotificationMessage />
           <BrowserRouter>
             <AppRouter />

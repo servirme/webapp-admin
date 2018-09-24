@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { path } from 'ramda'
-import MaterialUITextField from 'material-ui/TextField'
+import MaterialUITextField from '@material-ui/core/TextField'
 
 const TextField = ({
   apiResponse,

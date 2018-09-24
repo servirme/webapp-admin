@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import Snackbar from 'material-ui/Snackbar'
-import IconButton from 'material-ui/IconButton'
-import CloseIcon from 'material-ui-icons/Close'
+import Snackbar from '@material-ui/core/Snackbar'
+import IconButton from '@material-ui/core/IconButton'
+import CloseIcon from '@material-ui/icons/Close'
 import { applySpec, compose, path } from 'ramda'
 
 import { dismissNotification } from '../redux/actions/notifications'
