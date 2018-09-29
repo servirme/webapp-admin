@@ -7,8 +7,8 @@ import PrivateRoute from '../components/PrivateRoute'
 
 // PAGES
 import Home from '../pages/index'
-import Login from '../pages/auth/login'
-import Register from '../pages/auth/register'
+import Login from '../pages/auth/LoginPage'
+import Register from '../pages/auth/RegisterPage'
 import Error404 from '../pages/errors/Error404'
 
 const Router = () => {

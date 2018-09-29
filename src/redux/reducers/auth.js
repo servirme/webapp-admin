@@ -1,3 +1,5 @@
+import jwt_decode from 'jwt-decode'
+
 import baseReducer from './helpers/base'
 import {
   LOGIN_SUCCESS,
@@ -10,6 +12,7 @@ const loginSuccess = (state, payload) => {
     ...state,
     isLogged: true,
     token: payload.token,
+    data: jwt_decode(payload.token),
   }
 }
 
@@ -18,13 +21,15 @@ const registerSuccess = (state, payload) => {
     ...state,
     isLogged: true,
     token: payload.token,
+    data: jwt_decode(payload.token),
   }
 }
 
 const logout = state => ({
   ...state,
   isLogged: false,
-  token: false,
+  token: '',
+  data: {},
 })
 
 const reducers = {
@@ -35,7 +40,7 @@ const reducers = {
 
 const authInitialState = {
   isLogged: false,
-  loggedUser: null,
+  data: {},
   token: '',
 }
 

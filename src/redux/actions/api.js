@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { assocPath, identity } from 'ramda'
+import { assocPath, identity, pipe } from 'ramda'
 
 import MODULE_REQUEST from '../actionTypes/api'
 import { apiResponseNotification } from './notifications'
@@ -81,9 +81,12 @@ const request = (config, options = {}) => {
   return new Promise((resolve, reject) => {
     options.dispatch((innerDispatch, getState) => {
       const state = getState()
+      const addFields = pipe(
+        assocPath(['headers', 'Accept-Language'], state.api.language),
+        assocPath(['headers', 'Token'], state.auth.token)
+      )
 
-      let requestConfig = assocPath(['headers', 'Accept-Language'], state.api.language, config)
-      requestConfig = assocPath(['headers', 'Token'], state.auth.token, requestConfig)
+      const requestConfig = addFields(config)
 
       options.dispatch = innerDispatch
 

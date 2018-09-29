@@ -26,7 +26,7 @@ const AuthLayout = ({ children, classes }) => {
           {
             `
             body {
-              background: url("https://servirme.s3.amazonaws.com/landing-page/food.png")
+              background: url("/food.png")
                 no-repeat
                 center
                 center

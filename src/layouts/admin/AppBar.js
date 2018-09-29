@@ -1,7 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { compose } from 'ramda'
+import { connect } from 'react-redux'
+import {
+  applySpec,
+  compose,
+  path,
+} from 'ramda'
 import AppBarMaterial from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
@@ -43,7 +48,12 @@ const styles = theme => ({
   },
 })
 
-const AppBar = ({ classes, drawerOpen, onDrawerOpen }) => (
+const AppBar = ({
+  classes,
+  drawerOpen,
+  loggedEmail,
+  onDrawerOpen,
+}) => (
   <AppBarMaterial
     position='absolute'
     className={classNames(
@@ -74,6 +84,13 @@ const AppBar = ({ classes, drawerOpen, onDrawerOpen }) => (
       >
         Dashboard
       </Typography>
+      <Typography
+        variant='caption'
+        color='inherit'
+        noWrap
+      >
+        {loggedEmail}
+      </Typography>
       <IconButton color='inherit'>
         <PermIdentityIcon />
       </IconButton>
@@ -84,10 +101,16 @@ const AppBar = ({ classes, drawerOpen, onDrawerOpen }) => (
 AppBar.propTypes = {
   classes: PropTypes.object.isRequired,
   drawerOpen: PropTypes.bool.isRequired,
+  loggedEmail: PropTypes.string.isRequired,
   onDrawerOpen: PropTypes.func.isRequired,
 }
 
+const mapStateToProps = applySpec({
+  loggedEmail: path(['auth', 'data', 'user', 'email']),
+})
+
 const enhance = compose(
+  connect(mapStateToProps),
   withStyles(styles)
 )
 

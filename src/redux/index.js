@@ -8,6 +8,7 @@ const pathsToPersist = [
   'api.language',
   'auth.isLogged',
   'auth.token',
+  'auth.data',
 ]
 
 const persistConfig = {

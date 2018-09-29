@@ -1,28 +1,21 @@
-import React, { Component } from 'react'
+import React, { Fragment, Component } from 'react'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { applySpec, compose, path } from 'ramda'
+import { compose } from 'ramda'
 import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
 import Checkbox from '@material-ui/core/Checkbox'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import { translate } from 'react-i18next'
 
-import AuthLayout from '../../layouts/auth'
-import { register } from '../../redux/actions/auth'
-import TextField from '../../components/TextField'
-import SubmitButton from '../../components/SubmitButton'
+import TextField from '../components/TextField'
+import SubmitButton from '../components/SubmitButton'
 
-class Register extends Component {
+class RegisterForm extends Component {
   state = {
     email: '',
     password: '',
     acceptedTerms: false,
-    error: {
-      email: false,
-      password: false,
-    },
   }
 
   toggleTerms = (event) => {
@@ -36,10 +29,13 @@ class Register extends Component {
 
   render() {
     const { acceptedTerms } = this.state
-    const { registerApiResponse, t } = this.props
+    const {
+      registerResponse,
+      t,
+    } = this.props
 
     return (
-      <AuthLayout>
+      <Fragment>
         <Typography
           align='center'
           gutterBottom
@@ -50,7 +46,7 @@ class Register extends Component {
         <TextField
           fieldName='email'
           autoFocus={true}
-          apiResponse={registerApiResponse}
+          apiResponse={registerResponse}
           fullWidth
           type="text"
           helperText='Enter your email'
@@ -58,13 +54,13 @@ class Register extends Component {
         />
         <TextField
           fieldName='password'
-          apiResponse={registerApiResponse}
+          apiResponse={registerResponse}
           type="password"
           fullWidth
           helperText='Enter your password'
           onChange={this.setStateParam('password')}
         />
-        <br/>
+        <br />
         <FormControlLabel
           control={
             <Checkbox
@@ -75,7 +71,7 @@ class Register extends Component {
           }
           label="Aceito os termos"
         />
-        <br/>
+        <br />
         <SubmitButton
           onClick={this.registerAction}
           disabled={!acceptedTerms}
@@ -85,29 +81,19 @@ class Register extends Component {
         <Button component={Link} to='/auth/login'>
           {t('button.login')}
         </Button>
-      </AuthLayout>
+      </Fragment>
     )
   }
 }
 
-Register.propTypes = {
+RegisterForm.propTypes = {
   register: PropTypes.func.isRequired,
-  registerApiResponse: PropTypes.object,
+  registerResponse: PropTypes.object,
   t: PropTypes.func.isRequired,
 }
 
-const mapStateToProps = applySpec({
-  isLogged: path(['auth', 'isLogged']),
-  registerApiResponse: path(['api', 'modules', 'register']),
-})
-
-const mapDispatchToProps = applySpec({
-  register,
-})
-
 const enhance = compose(
-  connect(mapStateToProps, mapDispatchToProps),
   translate()
 )
 
-export default enhance(Register)
+export default enhance(RegisterForm)
